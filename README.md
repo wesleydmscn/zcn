@@ -7,7 +7,7 @@
 [![npm version](https://img.shields.io/npm/v/zcn?color=blue)](https://www.npmjs.com/package/zcn)
 [![License](https://img.shields.io/npm/l/zcn)](LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/zcn)](https://www.npmjs.com/package/zcn)
-[![Issues](https://img.shields.io/github/issues/your-username/zcn)](https://github.com/your-username/zcn/issues)
+[![Issues](https://img.shields.io/github/issues/wesleydmscn/zcn)](https://github.com/your-username/zcn/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/your-username/zcn/pulls)
 
 Coleção de validadores brasileiros para Zod, como CPF, CNPJ, telefone e outros padrões locais. 
