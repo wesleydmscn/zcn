@@ -19,7 +19,10 @@ function isValidCNPJ(value: string): boolean {
   const secondFactors = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
   const firstCheck = calcCheckDigit(cnpj.slice(0, 12), firstFactors);
-  const secondCheck = calcCheckDigit(cnpj.slice(0, 12) + firstCheck, secondFactors);
+  const secondCheck = calcCheckDigit(
+    cnpj.slice(0, 12) + firstCheck,
+    secondFactors
+  );
 
   return (
     firstCheck === parseInt(cnpj[12]!, 10) &&

@@ -10,7 +10,7 @@
 [![Issues](https://img.shields.io/github/issues/wesleydmscn/zcn)](https://github.com/your-username/zcn/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/your-username/zcn/pulls)
 
-Coleção de validadores brasileiros para Zod, como CPF, CNPJ, telefone e outros padrões locais. 
+Coleção de validadores brasileiros para Zod, como CPF, CNPJ, telefone e outros padrões locais.
 Projetada para uso em frontend e backend com TypeScript e tipagem forte.
 
 ## 🚀 Instalação
