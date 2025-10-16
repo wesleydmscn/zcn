@@ -1,10 +1,12 @@
 import { z } from "zod";
 
 function isValidCNPJ(value: string): boolean {
+  const regex = /^(\d{14}|\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2})$/;
+  if (!regex.test(value)) return false;
+
   const cnpj = value.replace(/\D/g, "");
 
-  if (cnpj.length !== 14) return false;
-  if (/^(\d)\1{13}$/.test(cnpj)) return false; // ex: 11111111111111
+  if (/^(\d)\1{13}$/.test(cnpj)) return false;
 
   const calcCheckDigit = (base: string, factors: number[]): number => {
     let total = 0;
@@ -30,10 +32,5 @@ function isValidCNPJ(value: string): boolean {
   );
 }
 
-export const cnpj = z
-  .string()
-  .min(14, "CNPJ deve ter pelo menos 14 caracteres")
-  .max(18, "CNPJ inválido")
-  .refine(isValidCNPJ, {
-    message: "CNPJ inválido",
-  });
+export const cnpj = (params?: $ZcnValidationParams) =>
+  z.string().refine(isValidCNPJ, params);
