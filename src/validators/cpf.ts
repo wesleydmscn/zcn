@@ -1,6 +1,9 @@
 import { z } from "zod";
 
 function isValidCPF(value: string): boolean {
+  const regex = /^(\d{11}|\d{3}\.\d{3}\.\d{3}-\d{2})$/;
+  if (!regex.test(value)) return false;
+
   const cpf = value.replace(/\D/g, "");
 
   if (cpf.length !== 11) return false;
@@ -24,10 +27,5 @@ function isValidCPF(value: string): boolean {
   );
 }
 
-export const cpf = z
-  .string()
-  .min(11, "CPF deve ter pelo menos 11 caracteres")
-  .max(14, "CPF inválido")
-  .refine(isValidCPF, {
-    message: "CPF inválido",
-  });
+export const cpf = (params?: $ZcnValidationParams) =>
+  z.string().refine(isValidCPF, params);

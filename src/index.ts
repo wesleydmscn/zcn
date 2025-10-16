@@ -1,4 +1,8 @@
-import "./config/zod";
+import * as zod from "zod";
+import * as validators from "./validators";
 
-export { z } from "zod";
-export * from "./validators";
+type ZodWithValidators = typeof zod & typeof validators;
+
+const z: ZodWithValidators = Object.assign({ ...zod }, validators);
+
+export { z };
