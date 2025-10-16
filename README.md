@@ -15,6 +15,9 @@ Projetada para uso em frontend e backend com TypeScript e tipagem forte.
 
 ## 🚀 Instalação
 
+> [!Important]
+> É necessário que seu projeto esteja com a versão `"^4.1.12"` ou superior do Zod.
+
 ```bash
 npm install zcn
 # ou
