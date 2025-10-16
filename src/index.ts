@@ -1,9 +1,9 @@
 import * as zod from "zod";
 import * as validators from "./validators";
 
-export const z = Object.assign({}, zod, validators) as typeof zod & typeof validators;
+const z = Object.assign({}, zod, validators) as typeof zod & typeof validators;
 
-export namespace z {
+namespace z {
   export type infer<T extends zod.ZodTypeAny> = zod.infer<T>;
   export type ZodTypeAny = zod.ZodTypeAny;
   export type ZodObject<T extends zod.ZodRawShape> = zod.ZodObject<T>;
@@ -17,3 +17,5 @@ export namespace z {
   export type ZodOptional<T extends zod.ZodTypeAny> = zod.ZodOptional<T>;
   export type ZodNullable<T extends zod.ZodTypeAny> = zod.ZodNullable<T>;
 }
+
+export { z }
