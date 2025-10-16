@@ -1,7 +1,7 @@
 {
   "name": "zcn",
-  "version": "1.0.5",
-  "description": "A set of extended schemas for Zod",
+  "version": "1.0.6",
+  "description": "A set of ready-made schemas extended for Zod.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
