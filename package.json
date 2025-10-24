@@ -1,6 +1,6 @@
 {
   "name": "zcn",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A set of ready-made schemas extended for Zod.",
   "type": "module",
   "main": "./dist/index.js",
@@ -24,14 +24,12 @@
     "url": "git+https://github.com/wesleydmscn/zcn.git"
   },
   "keywords": [
+    "schema-validation",
+    "type-inference",
+    "runtime-validation",
     "zod",
-    "typescript",
-    "validators",
-    "cpf",
-    "cnpj",
-    "telefone",
-    "validation",
-    "schemas"
+    "zcn",
+    "typescript"
   ],
   "author": "Wesley Damasceno",
   "license": "MIT",
