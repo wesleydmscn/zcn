@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { z } from "..";
+import { z } from "../..";
 
 describe("CNPJ", () => {
   it("accepts valid CNPJs", () => {

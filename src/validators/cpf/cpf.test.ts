@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { z } from "..";
+
+import { z } from "../..";
 
 describe("CPF", () => {
   it("accepts valid CPFs", () => {

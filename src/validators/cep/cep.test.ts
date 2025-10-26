@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { z } from "..";
+import { z } from "../..";
 
 describe("ZIP Code (CEP)", () => {
   it("validates valid ZIP codes", () => {

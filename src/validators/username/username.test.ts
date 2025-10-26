@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { z } from "..";
+import { z } from "../..";
 
 describe("Username", () => {
   it("accepts valid usernames", () => {
