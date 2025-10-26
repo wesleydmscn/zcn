@@ -1,5 +1,5 @@
 export {};
 
 declare global {
-  type $ZcnValidationParams = { error: string };
+  type $ZcnValidationParams<T = {}> = { error: string } & T;
 }
