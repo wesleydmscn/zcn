@@ -14,7 +14,8 @@
     "prettier": "prettier . --write",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prepublishOnly": "npm run build"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
