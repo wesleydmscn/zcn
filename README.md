@@ -40,10 +40,6 @@ yarn install zcn
 | `z.nodeEnv()`   | Validates the `NODE_ENV` environment variable against accepted values.                                                    | Must be one of: `"production"`, `"development"`, `"test"`, or `"staging"`. Rejects any other string.                                                                                                              |
 | `z.port()`      | Validates a TCP/UDP port number, with optional coercion for environment variables.                                        | Accepts only numeric strings between `0` and `65535` (e.g. `"3000"`, `"8080"`).<br>For automatic type coercion, use `z.coerce.port()` to parse numeric inputs (e.g. `3000`).                                      |
 
-Perfeito 👌 — aqui está a seção **“Basic usage”** atualizada, incluindo exemplos de uso do `z.port()` e `z.coerce.port()` de forma clara e seguindo o mesmo padrão do seu README:
-
----
-
 ## Basic usage
 
 You just need to define a schema and use custom validations. For the purposes of this guide, we'll use a simple object schema:
