@@ -38,6 +38,11 @@ yarn install zcn
 | `z.username()`  | Validates a username with common web app constraints. Ensures format, allowed characters, and length.                     | Must be 3–20 characters long.<br>Start with a letter, may include letters, numbers, underscores, and dots. Cannot end with `_` or `.`, nor have consecutive dots or underscores (e.g. `john_doe`, `alice.smith`). |
 | `z.otp()`       | Validates an OTP (one-time password) code. Supports configurable minimum and maximum length.                              | Accepts only digits.<br>Length between `min` (default 4) and `max` (default 8).<br>Example: `1234` or `12345678`.                                                                                                 |
 | `z.nodeEnv()`   | Validates the `NODE_ENV` environment variable against accepted values.                                                    | Must be one of: `"production"`, `"development"`, `"test"`, or `"staging"`. Rejects any other string.                                                                                                              |
+| `z.port()`      | Validates a TCP/UDP port number, with optional coercion for environment variables.                                        | Accepts only numeric strings between `0` and `65535` (e.g. `"3000"`, `"8080"`).<br>For automatic type coercion, use `z.coerce.port()` to parse numeric inputs (e.g. `3000`).                                      |
+
+Perfeito 👌 — aqui está a seção **“Basic usage”** atualizada, incluindo exemplos de uso do `z.port()` e `z.coerce.port()` de forma clara e seguindo o mesmo padrão do seu README:
+
+---
 
 ## Basic usage
 
@@ -61,6 +66,30 @@ import { z } from "zcn";
 const ConfirmSecutityCodeSchema = z.object({
   code: z.otp({ min: 6, error: "Invalid OTP code" }),
 });
+```
+
+### Using port validation
+
+You can validate ports as **strings** (for environment variables) or as **numbers** (for programmatic usage).
+
+```ts
+import { z } from "zcn";
+
+// Example 1: Port as string (useful for process.env.PORT)
+const EnvSchema = z.object({
+  PORT: z.port({ error: "Invalid port" }),
+});
+
+EnvSchema.parse({ PORT: "3000" }); // valid
+EnvSchema.parse({ PORT: "abc" });  // invalid
+
+// Example 2: Port as number (coerced automatically)
+const ServerSchema = z.object({
+  port: z.coerce.port({ error: "Invalid port" }),
+});
+
+ServerSchema.parse({ port: 3000 }); // valid
+ServerSchema.parse({ port: -1 });   // invalid
 ```
 
 ## Inferring types
