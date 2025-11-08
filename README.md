@@ -29,14 +29,15 @@ yarn install zcn
 
 ## API
 
-| Schema          | Description                                                                                                               | Input Type | Returns     | Default Validation                                                                                                                                                                                                |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------- | ---------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `z.cpf()`       | Validates a Brazilian CPF (Cadastro de Pessoa Física). Checks format and both verification digits.                        | `string`   | `ZodString` | Must match `###.###.###-##` or `###########`.<br>Rejects repeated digits (e.g. `11111111111`) and validates both check digits using CPF’s modulus-11 algorithm.                                                   |
-| `z.cnpj()`      | Validates a Brazilian CNPJ (Cadastro Nacional da Pessoa Jurídica). Checks format and both verification digits.            | `string`   | `ZodString` | Must match `##.###.###/####-##` or `##############`.<br>Rejects repeated digits (e.g. `11111111111111`) and validates both check digits using CNPJ’s weighting algorithm.                                         |
-| `z.cep()`       | Validates a Brazilian postal code (CEP). Supports both dashed and undashed formats, rejecting invalid or repeated digits. | `string`   | `ZodString` | Must match `#####-###` or `########`.<br>Rejects invalid ranges (`< 01000000` or `> 98999999`) and repeated digits like `11111111`.                                                                               |
-| `z.telephone()` | Validates a Brazilian phone number (landline or mobile). Checks DDD range, length, and mobile prefix.                     | `string`   | `ZodString` | Must match:<br>`(##) 9####-####`, `(##) ####-####`, `##########`, or `###########`.<br>Validates DDD (11–99) and requires 9 as the first digit for 9-digit numbers.                                               |
-| `z.username()`  | Validates a username with common web app constraints. Ensures format, allowed characters, and length.                     | `string`   | `ZodString` | Must be 3–20 characters long.<br>Start with a letter, may include letters, numbers, underscores, and dots. Cannot end with `_` or `.`, nor have consecutive dots or underscores (e.g. `john_doe`, `alice.smith`). |
-| `z.otp()`       | Validates an OTP (one-time password) code. Supports configurable minimum and maximum length.                              | `string`   | `ZodString` | Accepts only digits.<br>Length between `min` (default 4) and `max` (default 8).<br>Example: `1234` or `12345678`.                                                                                                 |
+| Schema          | Description                                                                                                               | Default Validation                                                                                                                                                                                                |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `z.cpf()`       | Validates a Brazilian CPF (Cadastro de Pessoa Física). Checks format and both verification digits.                        | Must match `###.###.###-##` or `###########`.<br>Rejects repeated digits (e.g. `11111111111`) and validates both check digits using CPF’s modulus-11 algorithm.                                                   |
+| `z.cnpj()`      | Validates a Brazilian CNPJ (Cadastro Nacional da Pessoa Jurídica). Checks format and both verification digits.            | Must match `##.###.###/####-##` or `##############`.<br>Rejects repeated digits (e.g. `11111111111111`) and validates both check digits using CNPJ’s weighting algorithm.                                         |
+| `z.cep()`       | Validates a Brazilian postal code (CEP). Supports both dashed and undashed formats, rejecting invalid or repeated digits. | Must match `#####-###` or `########`.<br>Rejects invalid ranges (`< 01000000` or `> 98999999`) and repeated digits like `11111111`.                                                                               |
+| `z.telephone()` | Validates a Brazilian phone number (landline or mobile). Checks DDD range, length, and mobile prefix.                     | Must match:<br>`(##) 9####-####`, `(##) ####-####`, `##########`, or `###########`.<br>Validates DDD (11–99) and requires 9 as the first digit for 9-digit numbers.                                               |
+| `z.username()`  | Validates a username with common web app constraints. Ensures format, allowed characters, and length.                     | Must be 3–20 characters long.<br>Start with a letter, may include letters, numbers, underscores, and dots. Cannot end with `_` or `.`, nor have consecutive dots or underscores (e.g. `john_doe`, `alice.smith`). |
+| `z.otp()`       | Validates an OTP (one-time password) code. Supports configurable minimum and maximum length.                              | Accepts only digits.<br>Length between `min` (default 4) and `max` (default 8).<br>Example: `1234` or `12345678`.                                                                                                 |
+| `z.nodeEnv()`   | Validates the `NODE_ENV` environment variable against accepted values.                                                    | Must be one of: `"production"`, `"development"`, `"test"`, or `"staging"`. Rejects any other string.                                                                                                              |
 
 ## Basic usage
 
@@ -57,8 +58,8 @@ const Customer = z.object({
 ```ts
 import { z } from "zcn";
 
-const Login = z.object({
-  code: z.otp({ min: 6, max: 6, error: "Invalid OTP" }),
+const ConfirmSecutityCodeSchema = z.object({
+  code: z.otp({ min: 6, error: "Invalid OTP code" }),
 });
 ```
 
