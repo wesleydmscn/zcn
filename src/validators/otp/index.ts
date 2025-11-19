@@ -1,14 +1,12 @@
 import { z } from "zod";
 
-type OTPParams = Partial<$ZcnValidationParams> & { min?: number; max?: number };
+type OTPParams = Partial<$ZcnValidationParams> & {
+  length?: number;
+};
 
 export const otp = (params?: OTPParams) => {
-  let min = params?.min ?? 4;
-  let max = params?.max ?? 8;
-
-  if (min > max) [min, max] = [max, min];
-
-  const regex = new RegExp(`^\\d{${min},${max}}$`);
+  const length = params?.length ?? 6;
+  const regex = new RegExp(`^\\d{${length}}$`);
 
   return z
     .string({ error: params?.error })
